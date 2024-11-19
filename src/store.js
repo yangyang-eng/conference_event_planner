@@ -1,5 +1,5 @@
 // store.js
-//The above code create the global Redux store so all components in the application can access the state managed by the venueReducer()
+//The below code create the global Redux store so all components in the application can access the state managed by the venueReducer()
 import { configureStore } from '@reduxjs/toolkit';
 import venueReducer from './venueSlice';
 
