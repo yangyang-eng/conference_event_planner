@@ -1,6 +1,7 @@
 // venueSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
+//The initial state consists of an array of venue objects, each repesenting a rentable room in the venue
 export const venueSlice = createSlice({
   name: "venue",
   initialState: [
@@ -36,6 +37,8 @@ export const venueSlice = createSlice({
     },
   
   ],
+
+  //Reducer functions to manage the number of venuw items in the state
   reducers: {
    
     incrementQuantity: (state, action) => {
