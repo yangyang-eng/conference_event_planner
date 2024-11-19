@@ -1,8 +1,19 @@
+//Import the React library
+//Import useState from React library
 import React, { useState } from "react";
+
+//Import the css file into the current component
 import "./ConferenceEvent.css";
+
+//Import component Total Cost from the TotalCost jsx file
 import TotalCost from "./TotalCost";
+
+//Import hooks from react-redux library
 import { useSelector, useDispatch } from "react-redux";
+
+//Imports two named exports, incrementQuantity and decrementQuantity, from a file named venueSlice
 import { incrementQuantity, decrementQuantity } from "./venueSlice";
+
 const ConferenceEvent = () => {
     const [showItems, setShowItems] = useState(false);
     const [numberOfPeople, setNumberOfPeople] = useState(1);
