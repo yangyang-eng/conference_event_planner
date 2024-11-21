@@ -1,21 +1,29 @@
 import React, { useState } from "react";
 import "./ConferenceEvent.css";
 import TotalCost from "./TotalCost";
+
+//Import the required dependencies
 import { useSelector, useDispatch } from "react-redux";
 import { incrementQuantity, decrementQuantity } from "./venueSlice";
+
 const ConferenceEvent = () => {
     const [showItems, setShowItems] = useState(false);
     const [numberOfPeople, setNumberOfPeople] = useState(1);
+
+    //Function to retrieve venue items from the Redux store state
     const venueItems = useSelector((state) => state.venue);
     const dispatch = useDispatch();
+
+    //Caculate the remaining number of available auditorium halls to 3 > maximum = 3
     const remainingAuditoriumQuantity = 3 - venueItems.find(item => item.name === "Auditorium Hall (Capacity:200)").quantity;
 
-    
     const handleToggleItems = () => {
         console.log("handleToggleItems called");
         setShowItems(!showItems);
     };
 
+
+    //Event handler to manage increase and decrease quantities from the user interaction
     const handleAddToCart = (index) => {
         if (venueItems[index].name === "Auditorium Hall (Capacity:200)" && venueItems[index].quantity >= 3) {
           return; 
@@ -28,6 +36,8 @@ const ConferenceEvent = () => {
           dispatch(decrementQuantity(index));
         }
       };
+
+
     const handleIncrementAvQuantity = (index) => {
     };
 
@@ -47,15 +57,23 @@ const ConferenceEvent = () => {
     const ItemsDisplay = ({ items }) => {
 
     };
+
+    //Caculate the cost for all selected rooms
+    //Define function 
     const calculateTotalCost = (section) => {
+        //Initial totalcose
         let totalCost = 0;
+        //Caculate the total cose of the venue item 
         if (section === "venue") {
           venueItems.forEach((item) => {
             totalCost += item.cost * item.quantity;
           });
         }
+        //The function returns the caculated totalcost
         return totalCost;
       };
+
+    //Save totalcost in the venueTotalCost
     const venueTotalCost = calculateTotalCost("venue");
 
     const navigateToProducts = (idType) => {
