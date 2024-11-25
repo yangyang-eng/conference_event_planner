@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const venueSlice = createSlice({
   name: "venue",
+
+//Initialize the initialState array variable with objects to provide a data structure
   initialState: [
     {
       img: "https://pixabay.com/images/download/chairs-2181916_640.jpg",
@@ -38,6 +40,7 @@ export const venueSlice = createSlice({
   ],
   reducers: {
    
+//This function take 2 param state and action 
     incrementQuantity: (state, action) => {
       const { payload: index } = action;
       if (state[index]) {
